@@ -1,0 +1,13 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MyFirstTest {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\VAAGDEVI\\Downloads\\139.0.7258.66 chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.vaagdevi.edu.in/");
+        System.out.println("Title: " + driver.getTitle());
+        driver.quit();
+    }
+}
