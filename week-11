@@ -1,0 +1,51 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple JavaScript Example</title>
+</head>
+<body>
+  <h1 id="myHeading">Original Heading</h1>
+  <button onclick="changeText()">Change Text</button>
+  <script>
+    function changeText() {
+      document.getElementById("myHeading").textContent = "Hello world!";
+    }
+  </script>
+</body>
+</html>
+
+
+Main.java
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.Assert.assertEquals;
+
+public class Main {
+    private WebDriver driver;
+
+    @Before
+    public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void testChangeHeading() {
+        driver.get("file:///path/to/index.html");
+        driver.findElement(By.tagName("button")).click();
+        String result = driver.findElement(By.id("myHeading")).getText();
+        assertEquals("Hello world!", result);
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
+}
